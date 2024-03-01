@@ -208,6 +208,7 @@ class UnorderedList():
     def pop(self, index=-1):
         """Removes item at position index, or at the end of the list
         (-1) if no index is indicated.
+        From Mr. White's atds file
         """
         if self.head == None:
             return None      # Can't pop from empty list
@@ -248,6 +249,38 @@ class UnorderedList():
             next_node = next_node.get_next()
         result = result + "]"
         return result
+    
+    class UnorderedListStack(object):
+        """Implements a Stack using the UnorderedList class.
+        From Mr. White's atds file
+        """
+        def __init__(self):
+            self.ul = UnorderedList()
+
+        def push(self, item):
+            """Pushes an item onto the top of the stack"""
+            self.ul.add(item)
+
+        def pop(self):
+            """Removes the item at the top of the stack and
+            returns it.
+            """
+            return self.ul.pop(0)
+        
+        def peek(self):
+            """Examines the item at the top of the stack
+            and returns that value. Awkward: we don't have
+            a way to look at data at the beginning of an
+            Unordered List!"""
+            value = self.ul.pop(0)
+            self.ul.add(value)
+            return value
+
+        def size(self):
+            return self.ul.length()
+
+        def is_empty(self):
+            return self.ul.is_empty()
 
 def main():
     pass
