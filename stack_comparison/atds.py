@@ -282,49 +282,6 @@ class UnorderedListStack(object):
     
     def __repr__(self):
         return str(self.ul)
-    
-
-class HashTable(object):
-    """Describes a hash table based on two lists, slots, and values,
-    and describes putting and getting values onto that table.
-    Hash function is the mod % function, and collisions are handled 
-    using linear probing.
-    """
-    def __init__(self, size):
-        """Create empty list for the Map
-        """
-        self.keys = [None] * size
-        self.data = [None] * size
-        self.size = size
-
-    def __repr__(self):
-        return "Keys:   " + str(self.keys) + "\n" + "Values: " + str(self.data)
-
-    def hash_function(self, key):
-        return key % self.size
-
-    def put(self, key, value):
-        hash_value = key % self.size
-        while self.keys[hash_value] != None and self.keys[hash_value] != key:
-            hash_value += 1
-        if self.keys[hash_value] == key:
-            self.data[hash_value] = value
-        else:
-            self.keys[hash_value] = key
-            self.data[hash_value] = value
-
-
-    def get(self, key):
-        hash_value = key % self.size
-        while self.keys[hash_value] != None and self.keys[hash_value] !=key:
-            hash_value += 1
-        if self.keys[hash_value] == key:
-            return self.data[hash_value]
-        else:
-            return None
-        
-    def rehash(self, old_hash):
-        return (old_hash + 1) % self.size
 
 def main():
     pass
