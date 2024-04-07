@@ -327,41 +327,39 @@ class HashTable(object):
         return (old_hash + 1) % self.size
     
 class BinaryTree(object):
-    def binary_tree(r):
-        """Constructs a binary tree with value r
-        and no children.
-        """
-        return [r, [], []]
-
-    def get_root_val(root):
-        return root[0]
-        
-    def set_root_val(root, new_val):
-        root[0] = new_val
-        
-    def get_left_child(root):
-        return root[1]
-        
-    def get_right_child(root):
-        return root[2]
+    """Constructs a binary tree
+    """
+    def __init__(self, val):
+        self.val = val
+        self.left_child = None
+        self.right_child = None
     
-    def insert_left(root, value):
-        """Insert a new subtree of "value" as a left child.
-        """
-        new_subtree = BinaryTree(value)    # create new node
-        new_subtree[1] = root[1]            # set current left_child to 
-                                            # left_child of new node
-        root[1] = new_subtree               # set root left_child reference
-                                            # to this new subtree
+    def get_root_val(self):
+        return self.val
+    
+    def set_root_val(self, val):
+        self.val = val
 
-    def insert_right(root, value):
-        """Insert a new subtree of "value" as a right child.
-        """
-        new_subtree = BinaryTree(value)    # create new node
-        new_subtree[2] = root[2]            # set current right_child to 
-                                            # left_child of new node
-        root[2] = new_subtree               # set root right_child reference
-                                        # to this new subtree
+    def get_left_child(self):
+        return self.left_child
+
+    def get_right_child(self):
+        return self.right_child
+
+    def insert_left(self, val):
+        new_subtree = BinaryTree(val)
+        new_subtree.left_child = self.left_child
+        self.left_child = new_subtree
+    
+    def insert_right(self, val):
+        new_subtree = BinaryTree(val)
+        new_subtree.right_child = self.right_child
+        self.right_child = new_subtree
+
+    def __str__(self):
+        return "BinaryTree[key=" + str(self.val) + \
+               ",left_child=" + str(self.left_child) + \
+               ",right_child=" + str(self.right_child) + "]"
 
 def main():
     pass
