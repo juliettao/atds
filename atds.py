@@ -325,6 +325,43 @@ class HashTable(object):
         
     def rehash(self, old_hash):
         return (old_hash + 1) % self.size
+    
+class BinaryTree(object):
+    def binary_tree(r):
+        """Constructs a binary tree with value r
+        and no children.
+        """
+        return [r, [], []]
+
+    def get_root_val(root):
+        return root[0]
+        
+    def set_root_val(root, new_val):
+        root[0] = new_val
+        
+    def get_left_child(root):
+        return root[1]
+        
+    def get_right_child(root):
+        return root[2]
+    
+    def insert_left(root, value):
+        """Insert a new subtree of "value" as a left child.
+        """
+        new_subtree = BinaryTree(value)    # create new node
+        new_subtree[1] = root[1]            # set current left_child to 
+                                            # left_child of new node
+        root[1] = new_subtree               # set root left_child reference
+                                            # to this new subtree
+
+    def insert_right(root, value):
+        """Insert a new subtree of "value" as a right child.
+        """
+        new_subtree = BinaryTree(value)    # create new node
+        new_subtree[2] = root[2]            # set current right_child to 
+                                            # left_child of new node
+        root[2] = new_subtree               # set root right_child reference
+                                        # to this new subtree
 
 def main():
     pass
